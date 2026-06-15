@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Bebas+Neue&family=Fragment+Mono&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 :root {
   color-scheme: dark;
   --bg: #050607;
@@ -3939,5 +3943,235 @@ body::after {
 
   .archive-paper-strip {
     width: 100%;
+  }
+}
+
+/* Final font system. */
+:root {
+  --font-logo: "Bebas Neue", "Azeret Mono", sans-serif;
+  --font-menu: "Azeret Mono", "SUIT", monospace;
+  --font-code: "Azeret Mono", "IBM Plex Mono", monospace;
+  --font-title-ko: "SUIT", "Pretendard", "Noto Sans KR", sans-serif;
+  --font-date: "IBM Plex Mono", "Azeret Mono", monospace;
+  --font-notes-ko: "Pretendard", "SUIT", "Noto Sans KR", sans-serif;
+  --font-tag: "Fragment Mono", "IBM Plex Mono", monospace;
+  --font-recovery: "Space Grotesk", "Azeret Mono", sans-serif;
+  --font-body-final: "Azeret Mono", "SUIT", monospace;
+}
+
+body {
+  font-family: var(--font-body-final);
+}
+
+.dia-mark {
+  font-family: var(--font-logo);
+  letter-spacing: .015em;
+}
+
+.nav a,
+.visitor,
+.brand-title,
+.access-tag,
+.panel-head,
+.side-button,
+.enter,
+.open-link,
+.status-badge,
+.locked-file,
+.log-row,
+.hint-row {
+  font-family: var(--font-menu);
+}
+
+.file-code,
+.case-id {
+  font-family: var(--font-code);
+}
+
+.file-title,
+.case-name {
+  font-family: var(--font-title-ko);
+}
+
+.file-date,
+.file-status,
+.meta,
+.mini-progress span {
+  font-family: var(--font-date);
+}
+
+.notes-list,
+.notice {
+  font-family: var(--font-notes-ko);
+}
+
+.file-tag {
+  font-family: var(--font-tag);
+}
+
+.progress-info strong,
+.case-progress + strong {
+  font-family: var(--font-recovery);
+}
+
+.detail-copy,
+.summary-block,
+.terminal-text,
+.numbered-list,
+.analysis-list {
+  font-family: var(--font-body-final);
+}
+
+/* Prevent the current case ID from clipping inside the left archive panel. */
+.case-id {
+  font-size: clamp(28px, 2.35vw, 34px) !important;
+  letter-spacing: -0.045em !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  max-width: 100%;
+}
+
+/* Tablet layout: avoid stretched cabinet columns between desktop and phone. */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .app {
+    padding: 16px;
+  }
+
+  .topbar {
+    grid-template-columns: 260px minmax(0, 1fr);
+    height: auto;
+  }
+
+  .brand {
+    min-height: 76px;
+    padding: 0 18px;
+  }
+
+  .dia-mark {
+    font-size: 46px;
+  }
+
+  .nav {
+    grid-column: 1 / -1;
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    border-top: 1px solid var(--repo-border);
+  }
+
+  .nav a {
+    flex: 0 0 auto;
+    min-width: 148px;
+    height: 50px;
+    font-size: 11px;
+  }
+
+  .visitor {
+    min-height: 76px;
+    justify-content: end;
+    padding-right: 18px;
+  }
+
+  .layout {
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 14px;
+    justify-content: stretch;
+  }
+
+  .case-panel {
+    grid-column: 1;
+  }
+
+  .center-stack {
+    grid-column: 2;
+  }
+
+  .side-stack {
+    grid-column: 1 / -1;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .archive-grid,
+  .home-archive-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    justify-items: stretch;
+    gap: 14px;
+  }
+
+  .file-card,
+  .compact-file-card,
+  .home-layout .file-card {
+    max-width: none;
+    min-height: 318px;
+  }
+
+  .file-card:nth-child(2n),
+  .file-card:nth-child(3n),
+  .file-card:nth-child(5n) {
+    min-height: 318px;
+  }
+
+  .thumb,
+  .home-layout .thumb,
+  .compact-file-card .thumb {
+    height: 142px;
+  }
+
+  .panel-head {
+    min-height: 44px;
+    font-size: 14px;
+    padding-inline: 12px;
+  }
+
+  .case-id {
+    font-size: 30px !important;
+  }
+
+  .archive-paper-strip {
+    grid-column: 1 / -1;
+    width: min(720px, 86vw);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 940px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .case-panel,
+  .center-stack,
+  .side-stack {
+    grid-column: 1;
+  }
+
+  .case-panel .panel-body {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 12px 18px;
+    align-items: start;
+  }
+
+  .case-panel .red:first-child,
+  .case-panel .case-id,
+  .case-panel .case-name,
+  .case-panel .rule:first-of-type {
+    grid-column: 1;
+  }
+
+  .case-panel .meta,
+  .case-panel .progress-line,
+  .case-panel .side-button,
+  .case-panel .notice-rule,
+  .case-panel .red:nth-of-type(2),
+  .case-panel .notice,
+  .case-panel .system-box {
+    grid-column: 2;
+  }
+
+  .case-panel .system-box {
+    display: none;
   }
 }
